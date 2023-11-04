@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+package poketwo.database.v1;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+message Language {
+  int32 id = 1;
+  string iso639 = 2;
+  string iso3166 = 3;
+  string identifier = 4;
+  bool official = 5;
+}
+
+message Region {
+  int32 id = 1;
+  string identifier = 2;
+  repeated RegionInfo info = 3;
+}
+
+message RegionInfo {
+  string name = 1;
+  Language language = 2;
+}
+
+message Generation {
+  int32 id = 1;
+  string identifier = 2;
+  repeated GenerationInfo info = 3;
+  Region main_region = 4;
+}
+
+message GenerationInfo {
+  string name = 1;
+  Language language = 2;
+}
+
+message Type {
+  int32 id = 1;
+  string identifier = 2;
+  repeated TypeInfo info = 3;
+}
+
+message TypeInfo {
+  string name = 1;
+  Language language = 2;
+}
+
+message Species {
+  int32 id = 1;
+  string identifier = 2;
+  bool is_legendary = 3;
+  bool is_mythical = 4;
+  bool is_ultra_beast = 5;
+  repeated SpeciesInfo info = 6;
+  repeated Variant variants = 7;
+  Generation generation = 8;
+}
+
+message SpeciesInfo {
+  string name = 1;
+  google.protobuf.StringValue genus = 2;
+  google.protobuf.StringValue flavor_text = 3;
+  Language language = 4;
+}
+
+message Variant {
+  int32 id = 1;
+  string identifier = 2;
+  google.protobuf.StringValue variant_identifier = 3;
+  int32 height = 4;
+  int32 weight = 5;
+  int32 base_experience = 6;
+  int32 base_hp = 7;
+  int32 base_atk = 8;
+  int32 base_def = 9;
+  int32 base_satk = 10;
+  int32 base_sdef = 11;
+  int32 base_spd = 12;
+  bool is_default = 13;
+  bool is_mega = 14;
+  bool is_enabled = 15;
+  bool is_catchable = 16;
+  bool is_redeemable = 17;
+  repeated VariantInfo info = 18;
+  Species species = 19;
+  repeated Type types = 20;
+}
+
+message VariantInfo {
+  google.protobuf.StringValue variant_name = 1;
+  google.protobuf.StringValue pokemon_name = 2;
+  Language language = 3;
+}
+
+// User data
+
+message User {
+  uint64 id = 1;
+  google.protobuf.Timestamp inserted_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+}
+
+message PokedexEntry {
+  User user = 1;
+  Variant variant = 2;
+  int32 count = 3;
+  google.protobuf.Timestamp inserted_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message Pokemon {
+  uint64 id = 1;
+  User user = 2;
+  Variant variant = 3;
+
+  int32 level = 4;
+  int32 xp = 5;
+  bool shiny = 6;
+  string nature = 7;
+
+  int32 iv_hp = 8;
+  int32 iv_atk = 9;
+  int32 iv_def = 10;
+  int32 iv_satk = 11;
+  int32 iv_sdef = 12;
+  int32 iv_spd = 13;
+
+  bool favorite = 14;
+  google.protobuf.StringValue nickname = 15;
+
+  google.protobuf.Timestamp inserted_at = 16;
+  google.protobuf.Timestamp updated_at = 17;
+}
