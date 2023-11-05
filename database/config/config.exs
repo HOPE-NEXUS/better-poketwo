@@ -2,7 +2,7 @@ import Config
 
 config :poketwo_database, Poketwo.Database.Repo,
   database: "",
-  username: "",
+  username: "hopeNexus",
   password: "",
   hostname: ""
 
