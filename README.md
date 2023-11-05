@@ -1,5 +1,5 @@
 # better-poketwo
-A Better Discord bot.
+A Better Discord bot in Rust & Elixer.
 
 ## Components
 Better-Pokétwo is a collection of smaller components:
