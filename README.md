@@ -41,3 +41,5 @@ Deploying Better-Pokétwo is not simple, and is not meant to be. If persistent t
 
 If you would still like to run your own instance, perhaps for development purposes, and you know what you are doing, a sample docker-compose.yml is provided. As of now, however, there is no other documentation or instructions for building, and no support whatsoever will be provided.
 
+## Contributing
+I'm open to contributions. However, make an issue first if you want to contribute to the bot describing changes & potential.
